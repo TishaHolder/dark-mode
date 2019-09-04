@@ -9,8 +9,7 @@ import useLocalStorage from "./hooks/useLocalStorage.js";
 import "./styles.scss";
 
 const App = () => {
-  const [coinData, setCoinData] = useState([]);
-  const [local, setLocal] = useLocalStorage("testkey", [1, 2, 3]);
+  const [coinData, setCoinData] = useState([]); 
  
 
   useEffect(() => {
@@ -23,8 +22,7 @@ const App = () => {
       .catch(err => console.log(err));
   }, []);
   return (
-    <div className="App">
-      {JSON.stringify(local)}
+    <div className="App">      
       <Navbar />
       <Charts coinData={coinData} />
     </div>
