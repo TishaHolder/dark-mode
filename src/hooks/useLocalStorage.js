@@ -1,7 +1,7 @@
 import React from "react";
 import {useState} from "react";
 
-function useLocalStorage(key, initialValue) {
+const useLocalStorage = (key, initialValue) => {
     
     // To retrieve an item from localStorage, call localStorage.getItem('itemName')
     // If that item doesn't exist, it will return undefined
@@ -12,10 +12,12 @@ function useLocalStorage(key, initialValue) {
         return item ? JSON.parse(item) : initialValue;
      });
 
-     const setValue = (value) => {
-         setStoredValue (value);
-         window.localStorage.setItem(key, JSON.stringify (value));
-     }
+     const setValue = value => {
+        // Save state
+        setStoredValue(value);
+        // Save to local storage
+        window.localStorage.setItem(key, JSON.stringify(value));
+      };
 
      return [storedValue, setValue];
 
